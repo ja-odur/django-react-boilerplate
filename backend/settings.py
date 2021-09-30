@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6!jza^j2kw^#e(2pemv+s&c^2#r-^z#k7q=&k-4jg$avyjg^z@'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -120,4 +122,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+# Static
+STATIC_HOST = config('WEB_STATIC_HOST', '')
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+# This is where collectstatic will put all the static files it gathers.  These should then
+# be served out from /static by the StaticFilesStorage
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# This is where the files will be collected from when running `collectstatic`.
+# From Django's perspective, this is the input location.
+STATICFILES_DIRS = []
+
+if DEBUG:
+    STATIC_HOST = 'http://localhost:8081'  # Use webpack-dev-server on port 8081
+    STATICFILES_DIR = []  # type: Sequence[str]
+
+STATIC_URL = STATIC_HOST + '/static/'
