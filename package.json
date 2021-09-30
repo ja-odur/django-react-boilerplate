@@ -1,0 +1,22 @@
+{
+  "name": "django-react-boilerplate",
+  "version": "1.0.0",
+  "description": "boilerplate for creating a django with a react frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ja-odur/django-react-boilerplate.git"
+  },
+  "keywords": [
+    "django-react"
+  ],
+  "author": "Joseph Odur (ja-odur)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ja-odur/django-react-boilerplate/issues"
+  },
+  "homepage": "https://github.com/ja-odur/django-react-boilerplate#readme"
+}
