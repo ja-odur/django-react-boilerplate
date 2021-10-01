@@ -6,7 +6,7 @@ import './index.css';
 const App = () => (
     <div>
         <h1>React App Set Successfully</h1>
-        <h3>Date :{new Date().toDateString()}</h3>
+        <h3>Date: {new Date().toDateString()}</h3>
     </div>
 );
 
